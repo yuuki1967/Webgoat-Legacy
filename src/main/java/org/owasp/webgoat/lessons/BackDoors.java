@@ -20,6 +20,7 @@ import org.apache.ecs.html.TD;
 import org.apache.ecs.html.TH;
 import org.apache.ecs.html.TR;
 import org.apache.ecs.html.Table;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.owasp.webgoat.session.DatabaseUtilities;
 import org.owasp.webgoat.session.WebSession;
 
@@ -95,20 +96,21 @@ public class BackDoors extends SequentialLessonAdapter
                 t.addElement(tr);
 
                 tr = new TR();
-                tr.addElement(new TD(rs.getString("userid")));
-                tr.addElement(new TD(rs.getString("password")));
-                tr.addElement(new TD(rs.getString("ssn")));
-                tr.addElement(new TD(rs.getString("salary")));
-                tr.addElement(new TD(rs.getString("email")));
+//                tr.addElement(new TD(rs.getString("userid")));
+                tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("userid"))));
+                tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("password"))));
+                tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("ssn"))));
+                tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("salary"))));
+                tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("email"))));
                 t.addElement(tr);
                 while (rs.next())
                 {
                     tr = new TR();
-                    tr.addElement(new TD(rs.getString("userid")));
-                    tr.addElement(new TD(rs.getString("password")));
-                    tr.addElement(new TD(rs.getString("ssn")));
-                    tr.addElement(new TD(rs.getString("salary")));
-                    tr.addElement(new TD(rs.getString("email")));
+                    tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("userid"))));
+                    tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("password"))));
+                    tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("ssn"))));
+                    tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("salary"))));
+                    tr.addElement(new TD(StringEscapeUtils.escapeHtml4(rs.getString("email"))));
                     t.addElement(tr);
                 }
                 ec.addElement(t);
